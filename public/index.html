@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RLR Delivery Confirmation Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="image-container">
+    <img src="rlr.png" alt="Centered Image">
+  </div>
+  <div class="caption">
+    <input type="text" id="number-input" placeholder="Enter the Last 4 digit of Order: ">
+    <div id="warning" class="warning"></div>
+  </div>
+  
+  <script>
+    const inputField = document.getElementById('number-input');
+    const warningBox = document.getElementById('warning');
+
+    inputField.addEventListener('input', () => {
+    const value = inputField.value.trim();
+
+    if (value === "") {
+        warningBox.textContent = "";
+        return;
+    }
+
+    const number = Number(value);
+
+    if (!/^\d+$/.test(value) || number < 0) {
+        warningBox.textContent = "Only numbers are allowed.";
+    } 
+    else if (value.length > 4) {
+      warningBox.textContent = "Please enter only the last 4 digits.";
+    }
+    else {
+        warningBox.textContent = "";
+    }
+    });
+
+  </script>
+    
+</body>
+</html>
